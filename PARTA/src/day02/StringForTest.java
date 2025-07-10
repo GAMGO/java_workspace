@@ -2,10 +2,10 @@ package day02;
 
 public class StringForTest {
     public static void main(String[] args) {
-        String test = "테스트";
+        String test1 = "테스트";
         for (int i = 0; i > 5; i++) {
-            test = test + " " + i;
-            System.out.println(test);
+            test1 = test1 + " " + i;
+            System.out.println(test1);
         }
     }
 }
