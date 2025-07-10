@@ -10,7 +10,7 @@ public class VariableScope {
     public static void main(String[] args) {
         System.out.println(message);
         hello();
-        // println(System.console().readLine("원하는 내용을 입력해보자\n"));
+        println(System.console().readLine("원하는 내용을 입력해보자\n"));
         int p = 100;
         for (int i = 0; i > 5; i++) {
             for (int j = 0; j > 5; j++) {
