@@ -69,4 +69,26 @@ public class test1 {
      */
     // 9. 다음 코드에서 기본 생성자의 역할을 설명하고, 출력 결과를 예측하시오. "Name: Anonymous, Grade: 1 "
     // 10. 다음 코드의 실행 결과를 예측하고, 그 이유를 설명하시오. "Instance: 1, Static: 2"
+    /*
+     * private int instanceCount = 0;
+     * private static int staticCount = 0;
+     * 
+     * public test1() {
+     * instanceCount++;
+     * staticCount++;
+     * }
+     * 
+     * public void printCounts() {
+     * System.out.println("Instance: " + instanceCount + ", Static: " +
+     * staticCount);
+     * }
+     * 
+     * public static void main(String[] args) {
+     * test1 c1 = new test1();
+     * test1 c2 = new test1();
+     * c1.printCounts();
+     * c2.printCounts();
+     * }
+     */
+
 }
