@@ -13,18 +13,16 @@ public class MathRandom {
         // 간단 테스트
 
         for (int i = 0; i < 6; i++) {
-            // System.out.println(Math.random()); // 0보다 크고 1보다 작은 실수
+            System.out.println(Math.random()); // 0보다 크고 1보다 작은 실수
             double rndNum = Math.random();
             int range = 45 - i; // 0보다 크고 (45-i)보다 작은 랜덤값으로 범위 줄여나감
-            // System.out.print((rndNum * range) + "\t");
-            // System.out.println((int) (rndNum * range)); // 잘림. Math.round()는 반올림
+            System.out.print((rndNum * range) + "\t");
+            System.out.println((int) (rndNum * range)); // 잘림. Math.round()는 반올림
             int ballIndex = (int) (rndNum * range);
             result[i] = balls[ballIndex];
             // ballIndex 위치의 값은 빼고 복사하여 새로운 배열로 계속하기
             // 메소드 실행 결과 -> balls 기존 배열로 리턴 가능합니다.
             balls = newBalls(balls, ballIndex);
-
-            // System.out.println(Arrays.toString(balls));
         }
         System.out.println(Arrays.toString(result));
 
