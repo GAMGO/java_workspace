@@ -4,27 +4,29 @@ import java.util.Arrays;
 
 public class MathRandom {
     public static void main(String[] args) {
-        int[] result = new int[6];
-        int[] balls = new int[45];
+        for (int u = 0; u < 5; u++) {
+            int[] result = new int[6];
+            int[] balls = new int[45];
 
-        for (int i = 0; i < 45; i++)
-            balls[i] = i + 1; // 명령문이 하나만 반복할 떄는 { } 생량
+            for (int i = 0; i < 45; i++)
+                balls[i] = i + 1; // 명령문이 하나만 반복할 떄는 { } 생량
 
-        // 간단 테스트
+            // 간단 테스트
 
-        for (int i = 0; i < 6; i++) {
-            System.out.println(Math.random()); // 0보다 크고 1보다 작은 실수
-            double rndNum = Math.random();
-            int range = 45 - i; // 0보다 크고 (45-i)보다 작은 랜덤값으로 범위 줄여나감
-            System.out.print((rndNum * range) + "\t");
-            System.out.println((int) (rndNum * range)); // 잘림. Math.round()는 반올림
-            int ballIndex = (int) (rndNum * range);
-            result[i] = balls[ballIndex];
-            // ballIndex 위치의 값은 빼고 복사하여 새로운 배열로 계속하기
-            // 메소드 실행 결과 -> balls 기존 배열로 리턴 가능합니다.
-            balls = newBalls(balls, ballIndex);
+            for (int i = 0; i < 6; i++) {
+                // System.out.println(Math.random()); // 0보다 크고 1보다 작은 실수
+                double rndNum = Math.random();
+                int range = 45 - i; // 0보다 크고 (45-i)보다 작은 랜덤값으로 범위 줄여나감
+                // System.out.print((rndNum * range) + "\t");
+                // System.out.println((int) (rndNum * range)); // 잘림. Math.round()는 반올림
+                int ballIndex = (int) (rndNum * range);
+                result[i] = balls[ballIndex];
+                // ballIndex 위치의 값은 빼고 복사하여 새로운 배열로 계속하기
+                // 메소드 실행 결과 -> balls 기존 배열로 리턴 가능합니다.
+                balls = newBalls(balls, ballIndex);
+            }
+            System.out.println(Arrays.toString(result));
         }
-        System.out.println(Arrays.toString(result));
 
         // 배열 복사 메소드 : System 클래스
 
