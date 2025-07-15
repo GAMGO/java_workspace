@@ -36,8 +36,8 @@ class StudentScore {
 
     // 매개변수 생성자
     public StudentScore(String name, int kor, int eng, int math) {
+        this();
         this.name = name;
-        this.scores = new int[3];//
         this.scores[KOR] = kor;
         this.scores[ENG] = eng;
         this.scores[MATH] = math;
