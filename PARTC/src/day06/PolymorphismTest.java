@@ -11,8 +11,12 @@ public class PolymorphismTest {
         ch2.setMsg("Hi Java");
         ch2.setName("sana");
         test1(ch2);
+        ch3.setMsg("Hi 리액트");
+        ch3.setName("최사나");
+        test1(ch3);
         ch1 = makeCh(0, "김모모");
-        ch1 = makeCh(0, "최사나");
+        System.out.println(ch1);
+        ch1 = makeCh(1, "kim momo");
         System.out.println(ch1);
 
     }
@@ -25,7 +29,7 @@ public class PolymorphismTest {
         YourP ch = null;
         if (type == 0) {
             ch = new YourC();
-            ch.setMsg("ssss");
+            ch.setMsg("goodBye!");
             // return new YourC();
 
         } else {
