@@ -68,7 +68,7 @@ class Shp {
         this.color = color;
     }
 
-    public int calcArea() {
+    public double calcArea() {
         return width * height;
     }
 
