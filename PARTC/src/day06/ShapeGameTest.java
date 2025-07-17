@@ -13,6 +13,18 @@ public class ShapeGameTest {
         rec.draw();
         cir.draw();
         tri.draw();
+        System.out.println(rec instanceof rct);
+        System.out.println(cir instanceof tri);
+        System.out.println(tri instanceof rad);
+        Shp[] shapes = new Shp[] { rec, tri, cir, null, null };
+        for (Shp s : shapes) {
+            if (s instanceof rad) {
+                System.out.println("Circle = " + s.toString());
+                Shp temp = (Shp) s;
+
+                temp.draw();
+            }
+        }
     }
 }
 
@@ -83,6 +95,29 @@ class Shp {
 }
 
 class rct extends Shp {
+    private int radius;
+    private static final double PI = 3.14; // 상수로 선언.
+
+    rct() {
+        super(); // 생략 가능
+    }
+
+    rct(int posX, int posY, int width, int height, String color) {
+        super(posX, posY, width, height, color);
+    }
+
+    @Override
+    public double calcArea() {
+        return radius * radius * PI;
+    }
+
+    public int getRadius() {
+        return radius;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
 
     @Override
     public void draw() {

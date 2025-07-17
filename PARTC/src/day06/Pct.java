@@ -4,8 +4,8 @@ public class Pct {
     public static void main(String[] args) {
         YourP yp = new YourP();
         YourC yc = new YourC();
-        yp.setMsg("무시됨");
-        yc.setMsg("???");
+        yp.setMsg("메세지입니다.");
+        yc.setMsg("메시지 입니까???");
         System.out.println(yp.getMsg());
         System.out.println(yc.getMsg());
         yc.setName("mm");
