@@ -5,6 +5,10 @@ public interface Beable {
 
   // abstract String beable(); // 인터페이스에서 abstarct 키워드 생략
   String beable();
+
+  default void print() {
+    System.out.println("'default' Interface Method is not need to redefined again.");
+  }
 }
 
 // 인터페이스는 모두 public : 키워드 생략 가능
