@@ -2,6 +2,8 @@ package day08;
 
 import java.util.Arrays;
 
+import org.w3c.dom.views.DocumentView;
+
 public class Problems {
     public static void main(String[] args) {
         Product[] p = new Product[4];
@@ -67,7 +69,8 @@ class Product implements Comparable<Product>, Cloneable {
 
     @Override
     public int compareTo(Product other) {
-        return (int) (this.price - other.price);
+        return Double.compare(this.price, other.price);
+        /* (int) (this.price - other.price); 소수점 이하는 정렬 못함 */
     }
 
     @Override
