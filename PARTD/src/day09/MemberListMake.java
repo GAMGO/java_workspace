@@ -8,12 +8,12 @@ import lombok.*;
 
 public class MemberListMake {
     public static void main(String[] args) {
-        List<String> names = List.of("apple", "kiwi", "mango", "banana");
-        System.out.println(names);
+        // List<String> names = List.of("apple", "kiwi", "mango", "banana");
+        // System.out.println(names);
 
-        String[] temp = { "apple", "kiwi", "mango", "banana" };
-        List<String> fruits = Arrays.asList(temp);
-        // fruits.add("melon");
+        // String[] temp = { "apple", "kiwi", "mango", "banana" };
+        // List<String> fruits = Arrays.asList(temp);
+        // // fruits.add("melon");
         Member m1 = new Member(1, "김땡땡", 3.4);
         Member m2 = new Member(2, "반하나", 1.9);
         Member m3 = new Member(3, "최사과", 5.4);

@@ -6,19 +6,19 @@ import java.io.IOException;
 
 public class MemberManagment {
     public static void main(String[] args) throws InterruptedException {
-        List<Member> li = new ArrayList<>();
+        List<Member> li = new ArrayList<Member>();
         boolean stat = true;
         boolean statSearch = false;
         String[] menu = { "['A'dd]회원 추가", "['D'elete]회원 삭제", "['S'earch]회원 조회", "['F'inish]종료" };
         String[] smenu = { "['L'ist]회원 리스트", "['K'-point]포인트 조회", "['B'ack] 뒤로" };
         while (stat) {
             System.out.println("Member Management Program");
-            delayed(1500);
+            delayed(1000);
             System.out.println("Select the menu.");
-            delayed(1500);
-            for (int a = 0; a < menu.length; a++) {
-                System.out.print(menu[a] + " ");
-                delayed(1000);
+            delayed(1000);
+            for (int i = 0; i < menu.length; i++) {
+                System.out.print(menu[i] + " ");
+                delayed(250);
             }
             String selected = System.console().readLine("\n\t Insert Command : ");
 
@@ -35,7 +35,7 @@ public class MemberManagment {
                     while (statSearch) {
                         for (int i = 0; i < smenu.length; i++) {
                             System.out.print("\t" + smenu[i] + " ");
-                            delayed(500);
+                            delayed(250);
                         }
                         String slectedsmenu = System.console().readLine("\n\t Insert Command : ");
                         switch (slectedsmenu.toUpperCase()) {
@@ -43,12 +43,12 @@ public class MemberManagment {
 
                                 break;
                             case "K":
-                                int id = Integer.parseInt(System.console().readLine("Please insert User id number"));
-                                // if (a) {
+                                int id = Integer.parseInt(System.console().readLine("Please insert User id number = "));
+                                if (id != 0) {
 
-                                // } else {
-                                // System.err.println("There is no data! Please make sure checking user id");
-                                // }
+                                } else {
+                                    System.err.println("There is no data! Please make sure checking user id");
+                                }
                                 break;
                             case "B":
                                 System.out.println("Back to the Main menu please wait a min..");
@@ -112,5 +112,14 @@ public class MemberManagment {
         String confirm = System.console().readLine("Are you sure? ");
         return (confirm.length() != 0 || confirm.toUpperCase().equals("Y"))
                 && (confirm.toUpperCase().equals("N") || keyCode == 27) ? false : true;
+    }
+
+    private static void Memlist(List<Member> l) {
+        Member m1 = new Member(1, "김땡땡", 3.4);
+        Member m2 = new Member(2, "반하나", 1.9);
+        Member m3 = new Member(3, "최사과", 5.4);
+        Member m4 = new Member(4, "박모모", 6.3);
+        l.addAll(List.of(m1, m2, m3, m4));
+
     }
 }
