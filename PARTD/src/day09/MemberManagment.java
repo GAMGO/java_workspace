@@ -5,12 +5,13 @@ import lombok.*;
 import java.io.IOException;
 
 public class MemberManagment {
-    public static void main(String[] args) throws InterruptedException {
-        List<Member> li = new ArrayList<Member>();
+    public static void main(String[] args) throws InterruptedException, IOException {
+        List<Member> li = new ArrayList<>();
+        initMemberList(li);
         boolean stat = true;
         boolean statSearch = false;
-        String[] menu = { "['A'dd]회원 추가", "['D'elete]회원 삭제", "['S'earch]회원 조회", "['F'inish]종료" };
-        String[] smenu = { "['L'ist]회원 리스트", "['K'-point]포인트 조회", "['B'ack] 뒤로" };
+        String[] menu = { "[A] Add User", "[D] Delete User", "[S] Search User", "[F] Finish" };
+        String[] smenu = { "[V] View User list", "[C] Check points", "[B] Back" };
         while (stat) {
             System.out.println("Member Management Program");
             delayed(1000);
@@ -23,33 +24,56 @@ public class MemberManagment {
             String selected = System.console().readLine("\n\t Insert Command : ");
 
             switch (selected.toUpperCase()) {
+                case "--HELP":
+                    System.out.println("\n");
+                    help();
+                    break;
                 case "A":
                     System.out.println(Arrays.toString(menu));
                     System.out.println("\t▼");
-                    addMember(li);
+                    if (c("Add User")) {
+                        addMember(li);
+                        System.out.println("\tUpdated List");
+                        for (int i = 0; i < li.size(); i++) {
+                            delayed(250);
+                            System.out.println("\t" + i + ":  " + li.get(i));
+                        }
+                    } else {
+                        System.out.println("Process Canceled");
+                    }
                     break;
                 case "S":
                     System.out.println(Arrays.toString(menu));
-                    System.out.println("\t\t\t\t\t\t▼");
+                    System.out.println("\t\t\t\t\t▼");
                     statSearch = true;
                     while (statSearch) {
                         for (int i = 0; i < smenu.length; i++) {
-                            System.out.print("\t" + smenu[i] + " ");
+                            System.out.print(" " + smenu[i] + " ");
                             delayed(250);
                         }
                         String slectedsmenu = System.console().readLine("\n\t Insert Command : ");
                         switch (slectedsmenu.toUpperCase()) {
-                            case "L":
-
+                            case "--HELP":
+                                System.out.println("\n");
+                                help();
                                 break;
-                            case "K":
-                                int id = Integer.parseInt(System.console().readLine("Please insert User id number = "));
-                                if (id != 0) {
-
-                                } else {
-                                    System.err.println("There is no data! Please make sure checking user id");
+                            case "V":
+                                System.out.println("\tList");
+                                for (int i = 0; i < li.size(); i++) {
+                                    delayed(250);
+                                    System.out.println("\t" + i + ":  " + li.get(i));
                                 }
                                 break;
+                            case "C":
+                                int index = Integer.parseInt(System.console().readLine("Plase Insert User id = "));
+                                double point = Double.parseDouble(System.console().readLine("\tPoint >>> "));
+                                if (c("Check points")) {
+                                    li.get(index).setPt(point);
+                                    // ✅ index 의 객체를 가져와서 (Member 타입) setter 로 point 값 변경
+                                    System.out.println("\tUpdated : " + li.get(index));
+                                } else {
+                                    System.out.println("\tProcess Canceled");
+                                }
                             case "B":
                                 System.out.println("Back to the Main menu please wait a min..");
                                 delayed(2000);
@@ -68,8 +92,19 @@ public class MemberManagment {
                     }
                     break;
                 case "D":
-                    delayed(1000);
-                    int index = Integer.parseInt(System.console().readLine("Plase Insert User id"));
+                    for (int i = 0; i < li.size(); i++) {
+                        delayed(250);
+                        System.out.println("\t" + i + ":  " + li.get(i));
+                    }
+                    delayed(500);
+                    int index = Integer.parseInt(System.console().readLine("Plase Insert User id = "));
+                    if (c("Delete User")) {
+                        delayed(250);
+                        System.out.println("\t Deleted : " + li.get(index));
+                        li.remove(index);
+                    } else {
+                        System.out.println("Process Canceled");
+                    }
                     break;
                 case "F":
                     System.out.println("Program Shotdown right now. please wait a moment.");
@@ -108,18 +143,45 @@ public class MemberManagment {
     }
 
     private static boolean c(String task) throws IOException {
-        int keyCode = System.in.read();
         String confirm = System.console().readLine("Are you sure? ");
         return (confirm.length() != 0 || confirm.toUpperCase().equals("Y"))
-                && (confirm.toUpperCase().equals("N") || keyCode == 27) ? false : true;
+                && confirm.toUpperCase().equals("N") ? false : true;
     }
 
-    private static void Memlist(List<Member> l) {
-        Member m1 = new Member(1, "김땡땡", 3.4);
-        Member m2 = new Member(2, "반하나", 1.9);
-        Member m3 = new Member(3, "최사과", 5.4);
-        Member m4 = new Member(4, "박모모", 6.3);
+    private static void initMemberList(List<Member> l) {
+        Member m1 = new Member(1, "김땡떙", 133.4);
+        Member m2 = new Member(2, "반하나", 111.9);
+        Member m3 = new Member(3, "최사과", 85.4);
+        Member m4 = new Member(4, "박모모", 96.3);
+
+        // 불변 객체 리스트가 메소드의 인자로 모든 요소를 가변 객체 list 에 추가
         l.addAll(List.of(m1, m2, m3, m4));
 
+    }
+
+    private static void help() {
+        String[] cmds = { "[Y,y] Confirm, Yes, Agree", "[N,n] Denied, No, DisAgree",
+                "[Press enter] = It is equals Yes[Y,y]", "[Ctrl + C] Forced Finish" };
+        System.out.println("\t\t----Command list----");
+        for (String x : cmds) {
+            try {
+                delayed(300);
+                System.out.println("\t" + x);
+                delayed(300);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        System.out.println("\n");
+        try {
+            delayed(1000);
+            System.out.println("Back to main title..");
+            System.out.println("\n");
+            delayed(1000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
