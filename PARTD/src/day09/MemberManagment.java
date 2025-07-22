@@ -2,6 +2,7 @@ package day09;
 
 import java.util.*;
 import lombok.*;
+import java.io.IOException;
 
 public class MemberManagment {
     public static void main(String[] args) throws InterruptedException {
@@ -32,22 +33,18 @@ public class MemberManagment {
                     System.out.println("\t\t\t\t\t\t▼");
                     statSearch = true;
                     while (statSearch) {
-                        for (int a = 0; a < smenu.length; a++) {
-                            System.out.print("\t" + smenu[a] + " ");
+                        for (int i = 0; i < smenu.length; i++) {
+                            System.out.print("\t" + smenu[i] + " ");
                             delayed(500);
                         }
                         String slectedsmenu = System.console().readLine("\n\t Insert Command : ");
-
                         switch (slectedsmenu.toUpperCase()) {
                             case "L":
-                                // for(int i = 0; i<li.)
-                                // System.out.println(li.get(i));
-                                // break;
-                                // case "K":
-                                // int id = Integer.parseInt(System.console().readLine("Please insert User id
-                                // number"));
-                                // if (li.get(id) = li.isEmpty()) {
-                                // System.out.println(li.get(id).getPt());
+
+                                break;
+                            case "K":
+                                int id = Integer.parseInt(System.console().readLine("Please insert User id number"));
+                                // if (a) {
 
                                 // } else {
                                 // System.err.println("There is no data! Please make sure checking user id");
@@ -108,5 +105,12 @@ public class MemberManagment {
         double ptinfo = Double.parseDouble(System.console().readLine("Insert amount of points [ex: 2.5] = "));
         Member m = new Member(idinfo, nameinfo, ptinfo);
         list.add(m);
+    }
+
+    private static boolean c(String task) throws IOException {
+        int keyCode = System.in.read();
+        String confirm = System.console().readLine("Are you sure? ");
+        return (confirm.length() != 0 || confirm.toUpperCase().equals("Y"))
+                && (confirm.toUpperCase().equals("N") || keyCode == 27) ? false : true;
     }
 }
