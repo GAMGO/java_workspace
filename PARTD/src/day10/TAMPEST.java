@@ -21,12 +21,15 @@ public class TAMPEST {
 
         Map<String, String> tm = new TreeMap<>(m);
         System.out.println(tm);
-
         String t = tm.get("a1");
         System.out.println(t);
         System.out.println("\n---------------------------\n");
         for (String k : tm.keySet()) {
             System.out.println(tm.get(k));
         }
+        System.out.println(m.entrySet().toString());
+        tm.entrySet().stream()
+                .forEach(entry -> System.out.println(entry + "\t" + entry.getKey() + " : " + entry.getValue()));
+        System.out.println(tm.values());
     }
 }
