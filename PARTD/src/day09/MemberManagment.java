@@ -3,6 +3,7 @@ package day09;
 import java.util.*;
 import lombok.*;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class MemberManagment {
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -94,7 +95,7 @@ public class MemberManagment {
                 case "D":
                     for (int i = 0; i < li.size(); i++) {
                         delayed(250);
-                        System.out.println("\t" + i + ":  " + li.get(i));
+                        System.out.println("\t" + (i + 1) + ":  " + li.get(i));
                     }
                     delayed(500);
                     int index = Integer.parseInt(System.console().readLine("Plase Insert User id = "));
@@ -135,7 +136,15 @@ public class MemberManagment {
     }
 
     private static void addMember(List<Member> list) {
-        int idinfo = Integer.parseInt(System.console().readLine("Please Insert new member's id numbers = "));
+        LocalDateTime now = LocalDateTime.now();
+        int hr = now.getHour();
+        int min = now.getMinute();
+        int sec = now.getSecond();
+        int nano = now.getNano();
+        int seed = hr + min + sec + nano;
+        Random r = new Random(seed);// 현재 시간을(HH:MM:SS.NN)을 모두 더한 값을 seed로 받아와 더욱 예측불가능한 랜덤 값으로 설정.
+        int target = r.nextInt(999);
+        int idinfo = target;
         String nameinfo = System.console().readLine("Please Insert new member name : ");
         double ptinfo = Double.parseDouble(System.console().readLine("Insert amount of points [ex: 2.5] = "));
         Member m = new Member(idinfo, nameinfo, ptinfo);
