@@ -63,25 +63,26 @@ public class RandomGame {
             } else {
                 // 숫자 스무고개 게임처럼 업,다운으로 Random Number값을 유추할 수 있도록 메세지 표시
                 // 단, 치트 유무는 개발자만 알고있으니 난이도를 낮추기 위해 근처값에 가면 근처에 있다고 알려주는 메세지 표시.
-                // 여기서 문제는 target(입력한 숫자)가 50이고 랜덤숫자가 20일때 -30이 되는데 Math.abs가 절댓값으로 설정하는 기능이래서 설정.
+                // 여기서 문제는 target(입력한 숫자)가 50이고 랜덤숫자가 20일때 -30이 되는데 Math.abs가 절댓값으로 설정하는 기능이래서
+                // 설정.
                 int gap = Math.abs(target - rNum);
                 if (target > rNum) {
 
                     if (gap >= 5) {
                         System.out.println("업! 다른 값입니다.");
-                        System.out.println(gap);
+
                     } else if (gap < 5) {
                         System.out.println("업! 거의 다 왔습니다.");
-                        System.out.println(gap);
+
                     }
                 } else if (target < rNum)
                     // 6부터는 다른 값으로, 5부터는 거의 다왔다는 표기를 해야하므로 뺀값 보다 작을 때 작거나 같다로 표기함.
                     if (gap > 5) {
                         System.out.println("다운! 다른 값입니다.");
-                        System.out.println(gap);
+
                     } else if (gap <= 5) {
                         System.out.println("다운! 거의 다 왔습니다.");
-                        System.out.println(gap);
+
                     }
             }
 
