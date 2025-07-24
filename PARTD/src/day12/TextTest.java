@@ -4,9 +4,26 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.util.*;
 
-public class Textasdfjkl {
+public class TextTest {
     public static void main(String[] args) throws IOException {
-        writeFile();
+        asdf();
+    }
+
+    public static void asdf() { // 변수명은 이렇게 샷건친듯 지정하면 안된다.
+        String fname = "TextFile.txt";
+        try (FileWriter fw = new FileWriter(fname, true); PrintWriter pw = new PrintWriter(fw);) {
+            int l = 0;
+            String test = "So many people live right there. close eyes and write down here.";
+            String[] ls = test.split("\\. +");
+            for (int i = 0; i < ls.length; i++) {
+                pw.println(ls[i]);
+                l++;
+            }
+            System.out.println(l + " Lines saved.");
+        } catch (Exception e) {
+            System.out.println("exception : " + e.getMessage());
+            // TODO: handle exception
+        }
     }
 
     public static void writeFile() throws IOException {
