@@ -63,12 +63,11 @@ public class RandomGame {
             } else {
                 // 숫자 스무고개 게임처럼 업,다운으로 Random Number값을 유추할 수 있도록 메세지 표시
                 // 단, 치트 유무는 개발자만 알고있으니 난이도를 낮추기 위해 근처값에 가면 근처에 있다고 알려주는 메세지 표시.
-                // 여기서 문제는 target(입력한 숫자)가 50이고 랜덤숫자가 20일때 -30이 되는데 그럴땐 어떻게 해야하나 싶어서 1을 곱했다.(곱하면
-                // 음수는 없어지니까)
-                int gap = target - rNum;
+                // 여기서 문제는 target(입력한 숫자)가 50이고 랜덤숫자가 20일때 -30이 되는데 Math.abs가 절댓값으로 설정하는 기능이래서 설정.
+                int gap = Math.abs(target - rNum);
                 if (target > rNum) {
 
-                    if (gap > 5) {
+                    if (gap >= 5) {
                         System.out.println("업! 다른 값입니다.");
                         System.out.println(gap);
                     } else if (gap < 5) {
