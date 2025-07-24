@@ -10,12 +10,13 @@ public class FTest {
         int y = t.getYear();
         int m = t.getMonthValue();
         int d = t.getDayOfMonth();
-        File f = new File("text_" + (y - 2000) + m + d + ".txt");
+        String fname = "text_" + (y - 2000) + m + d;
+        File txt = new File(fname + ".txt");
         try {
-            if (f.exists()) {
+            if (txt.exists()) {
                 System.out.println("같은 파일이 존재");
             } else {
-                if (f.createNewFile()) {
+                if (txt.createNewFile()) {
                     System.out.println("생성 완료");
                 } else {
 
@@ -25,9 +26,9 @@ public class FTest {
         } catch (Exception e) {
             System.out.println("파일 처리 예외 :" + e.getMessage());
         }
-        System.out.println(f.getName());
-        System.out.println(f.getAbsolutePath());
-        System.out.println(f.length());
+        System.out.println(txt.getName());
+        System.out.println(txt.getAbsolutePath());
+        System.out.println(txt.length());
 
     }
 }
