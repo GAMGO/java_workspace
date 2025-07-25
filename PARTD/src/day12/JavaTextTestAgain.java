@@ -6,7 +6,6 @@ public class JavaTextTestAgain {
     public static void main(String[] args) {
 
     }
-
     @Getter
     @Setter
     @AllArgsConstructor
